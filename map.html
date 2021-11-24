@@ -17,30 +17,70 @@
 </head>
 <body>
     
+    <!--Navbar-->
+    <header class="container-fluid fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark container">
+            <a href="#" class="navbar-brand">
+            <span class="mx-2 bold">Covid Awareness</span></a>
+            <button 
+            class="navbar-toggler" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#toggleMenu" 
+            aria-controls="toggelMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="toggleMenu">
+                <ul class="navbar-nav ms-auto text-center ">
+                    <li class="nav-item px-3"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item px-3"><a class="nav-link" href="about.html">What is Covid</a></li>
+                    <li class="nav-item px-3"><a class="nav-link" href="process.html">Symptoms and Treatments</a></li>
+                    <li class="nav-item px-3"><a class="nav-link" href="adopt.html">Find a Clinic</a></li>
+                    <li class="nav-item px-3"><a class="nav-link" href="about.html">About Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>    
 
-<!--<div id="map" class="map"></div>-->
 
-
-      <!--MAP-->
-        <main class="container-fluid mt-5">
-            <div class="container-fluid container-lg">
-                <div class="row main">
-                    <div class="col-4 border border-dark">
-                        <div class='sidebar'>
-                          <div class='heading text-center'>
-                            <h1>Locations</h1>
-                          </div>
-                          <div id='listings' class='listings'></div>
-                        </div>
-                    </div>
-                    <div class="col-8">
-                        <div id='map' class="mx-auto border border-dark"></div>
+  <!--MAP-->
+    <main class="container-fluid">
+        <div class="container-fluid container-lg">
+            <div class="row main">
+                <div class="col-4 border border-dark">
+                    <div class='sidebar'>
+                      <div class='heading text-center'>
+                        <h1>Locations</h1>
+                      </div>
+                      <div id='listings' class='listings'></div>
                     </div>
                 </div>
+                <div class="col-8">
+                    <div id='map' class="mx-auto border border-dark"></div>
+                </div>
             </div>
-        </main>
+        </div>
+    </main>
     
     
+ <!--Footer-->
+ <!--   <footer class="container-fluid bg-dark mt-5 footer pt-5 bottom-0">-->
+ <!--       <div class="row">-->
+ <!--           <div class="col-12 ">-->
+ <!--               <a href="#" class="p-2 text-light text-decoration-none">Privacy</a>-->
+ <!--               <a href="#" class="p-2 text-light text-decoration-none">Terms</a>-->
+ <!--               <a href="#" class="p-2 text-light text-decoration-none">Contact</a>-->
+ <!--           </div>-->
+ <!--       </div>-->
+ <!--       <div class="row">-->
+ <!--           <div class="col-12 text-light">-->
+ <!--               &copy Copyright 2021 Marcy Lab School-->
+ <!--           </div>-->
+ <!--       </div>-->
+ <!--   </footer>-->
     
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
     <script type="text/javascript" src="map.js"></script>

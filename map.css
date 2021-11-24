@@ -1,5 +1,6 @@
 main {
     height:500px;
+    margin-top:8%;
 }
 
 .sidebar {
@@ -9,4 +10,17 @@ main {
 
 #map {
     height:500px;
+}
+
+header {
+    background-color: #007185;
+}
+.footer .col-12 {
+        display:flex;
+        justify-content:center;
+}
+@media only screen and (min-width:768px){
+    .footer .col-12 {
+        justify-content:end;
+    }
 }

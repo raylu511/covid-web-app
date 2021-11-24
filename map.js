@@ -47,6 +47,34 @@ const fetchClinics = (zipCode) => {
   return clinics;
 }
 
+map.on('click', (event) => {
+  /* Determine if a feature in the "locations" layer exists at that point. */
+  const features = map.queryRenderedFeatures(event.point, {
+    layers: ['locations']
+  });
+
+  /* If it does not exist, return */
+  if (!features.length) return;
+
+  const clickedPoint = features[0];
+
+  /* Fly to the point */
+  flyToStore(clickedPoint);
+
+  /* Close all other popups and display popup for clicked store */
+  createPopUp(clickedPoint);
+
+  /* Highlight listing in sidebar (and remove highlight for all other listings) */
+  const activeItem = document.getElementsByClassName('active');
+  if (activeItem[0]) {
+    activeItem[0].classList.remove('active');
+  }
+  const listing = document.getElementById(
+    `listing-${clickedPoint.properties.id}`
+  );
+  listing.classList.add('active');
+});
+
 const buildLocationList = (stores) => {
   for (const store of stores.features) {
     
@@ -68,10 +96,46 @@ const buildLocationList = (stores) => {
     address.innerHTML = `${store.properties.address} ${store.properties.city}, ${store.properties.state} ${store.properties.postalCode}`;
     const phone = listing.appendChild(document.createElement('div'));
     phone.innerHTML = ` ${store.properties.phone}`;
+    
+    link.addEventListener('click', function () {
+      for (const feature of stores.features) {
+        if (this.id === `link-${feature.properties.id}`) {
+          flyToStore(feature);
+          createPopUp(feature);
+        }
+      }
+      const activeItem = document.getElementsByClassName('active');
+      if (activeItem[0]) {
+        activeItem[0].classList.remove('active');
+      }
+      this.parentNode.classList.add('active');
+    });
   }
 }
 
-const stores = fetchClinics(11220);
+const stores = fetchClinics(11204);
+
+// Flies to clicked store
+const flyToStore = (currentFeature) => {
+  map.flyTo({
+    center: currentFeature.geometry.coordinates,
+    zoom: 15
+  });
+}
+
+// Create popup for clicked store
+const createPopUp = (currentFeature) => {
+  const popUps = document.getElementsByClassName('mapboxgl-popup');
+  /** Check if there is already a popup on the map and if so, remove it */
+  if (popUps[0]) popUps[0].remove();
+
+  const popup = new mapboxgl.Popup({ closeOnClick: false })
+    .setLngLat(currentFeature.geometry.coordinates)
+    .setHTML(`<h3>${currentFeature.properties.name}</h3><h4>${currentFeature.properties.address}</h4>`)
+    .addTo(map);
+}
+
+
 
 map.on('load', () => {
   /* Add the data to your map as a layer */
