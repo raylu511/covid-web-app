@@ -1,3 +1,11 @@
+main {
+    height:500px;
+}
+
+.sidebar {
+    height:500px;
+    overflow-y: scroll;
+}
 
 #map {
     height:500px;

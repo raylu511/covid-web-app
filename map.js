@@ -54,7 +54,7 @@ const buildLocationList = (stores) => {
     const listings = document.getElementById('listings');
     const listing = listings.appendChild(document.createElement('div'));
     listing.id = `listing-${store.properties.id}`;
-    listing.className = 'item';
+    listing.className = 'border-top border-bottom border-dark';
     
     // Create link for each store
     const link = listing.appendChild(document.createElement('a'));
@@ -66,21 +66,12 @@ const buildLocationList = (stores) => {
     // Add details
     const address = listing.appendChild(document.createElement('div'));
     address.innerHTML = `${store.properties.address} ${store.properties.city}, ${store.properties.state} ${store.properties.postalCode}`;
-    
     const phone = listing.appendChild(document.createElement('div'));
     phone.innerHTML = ` ${store.properties.phone}`;
   }
 }
 
-
-
-
-
-
-
-
-const stores = fetchClinics(11204);
-
+const stores = fetchClinics(11220);
 
 map.on('load', () => {
   /* Add the data to your map as a layer */
