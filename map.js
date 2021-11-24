@@ -113,7 +113,7 @@ const buildLocationList = (stores) => {
   }
 }
 
-const stores = fetchClinics(11220);
+const stores = fetchClinics(11214);
 
 // Flies to clicked store
 const flyToStore = (currentFeature) => {
